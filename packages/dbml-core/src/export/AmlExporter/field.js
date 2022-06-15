@@ -18,10 +18,6 @@ export function getFieldLines (tableId, model) {
 
   const lines = table.fieldIds.map((fieldId) => {
     const field = model.fields[fieldId];
-    // let schemaName = '';
-    // if (field.type.schemaName && field.type.schemaName !== DEFAULT_SCHEMA_NAME) {
-    //   schemaName = hasWhiteSpace(field.type.schemaName) ? `"${field.type.schemaName}".` : `${field.type.schemaName}.`;
-    // }
     const typeDBML = hasWhiteSpace(field.type.type_name) ? `"${field.type.type_name}"` : field.type.type_name;
     const typeAML = TYPE.has(typeDBML) ? TYPE.get(typeDBML) : 'text';
     let line = `  dimension ${field.name} {\n`;
