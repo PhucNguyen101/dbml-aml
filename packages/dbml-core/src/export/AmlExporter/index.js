@@ -1,6 +1,6 @@
-import exportProject from './project';
-import exportTable from './table';
-import exportRef from './ref';
+import { exportProject } from './project';
+import { exportTable } from './table';
+import { exportRef } from './ref';
 
 export default class AmlExporter {
   static export (normalizedDatabase, dataSource) {
@@ -8,7 +8,7 @@ export default class AmlExporter {
 
     const res = database.schemaIds.reduce((accumulator, schemaId) => {
       const schema = normalizedDatabase.schemas[schemaId];
-      const { tableIds, enumIds, refIds } = schema;
+      const { tableIds, refIds } = schema;
 
       const tableModels = tableIds.map((tableId) => {
         const { name, content } = exportTable(tableId, normalizedDatabase, dataSource);

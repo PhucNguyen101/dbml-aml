@@ -1,11 +1,13 @@
 import { shouldPrintSchema } from '../utils';
 
-export default function exportRefs (refId, normalizedDatabase) {
+export function exportRef (refId, normalizedDatabase) {
   const ref = normalizedDatabase.refs[refId];
-  const relationType = `${ref.endpointIds[0].relation}${ref.endpointIds[0].relation}`;
+  const endPoint0 = normalizedDatabase.endpoints[ref.endpointIds[0]];
+  const endPoint1 = normalizedDatabase.endpoints[ref.endpointIds[1]];
+  const relationType = `${endPoint0.relation}${endPoint1.relation}`;
 
   let type = '';
-  let [fromEndpoint, toEndpoint] = [0, 1];
+  let [fromEndpoint, toEndpoint] = [endPoint0, endPoint1];
   switch (relationType) {
     case '11':
       type = 'one_to_one';
@@ -15,7 +17,7 @@ export default function exportRefs (refId, normalizedDatabase) {
       break;
     case '*1':
       type = 'many_to_one';
-      [fromEndpoint, toEndpoint] = [ref.endpointIds[1], ref.endpointIds[0]];
+      [fromEndpoint, toEndpoint] = [endPoint1, endPoint0];
       break;
     case '**':
       throw Error('many-to-many relationships are not supported');
@@ -33,18 +35,18 @@ export default function exportRefs (refId, normalizedDatabase) {
 
   // TODO: resolve edge case naming conflict
   // can't use ref.name because they aren't unique
-  const name = `${fromSchema.name}_${fromTable.name}_${fromField.name}__${toSchema.name}_${toTable.name}_${toField}`
+  const name = `${fromSchema.name}_${fromTable.name}_${fromField.name}__${toSchema.name}_${toTable.name}_${toField}`;
   const fromSchemaName = `${shouldPrintSchema(fromSchema, normalizedDatabase) ? `${fromSchema.name}.` : 'public'}`;
   const toSchemaName = `${shouldPrintSchema(toSchema, normalizedDatabase) ? `${toSchema.name}.` : 'public'}`;
 
   const fromModelName = `${fromSchemaName}_${fromTable.name}`;
   const toModelName = `${toSchemaName}_${toTable.name}`;
   const content = `
-    Relationship ${name} {
-      type: ${type}
-      from: ref(${fromModelName}, ${fromField.name})
-      to: ref(${toModelName}, ${toField.name})
-    }
+Relationship ${name} {
+  type: '${type}'
+  from: ref('${fromModelName}', '${fromField.name}')
+  to: ref('${toModelName}', '${toField.name}')
+}
   `;
 
   return { name, content };
