@@ -12,9 +12,10 @@ export default class AmlExporter {
 
       const tableModels = tableIds.map((tableId) => {
         const { name, content } = exportTable(tableId, normalizedDatabase, dataSource);
-        const fullName = `models/${name}.model.aml`;
+        const pathName = `models/${name}.model.aml`;
         return {
-          name: fullName,
+          originalName: name,
+          name: pathName,
           content,
         };
       });
@@ -22,9 +23,10 @@ export default class AmlExporter {
 
       const relationships = refIds.map((refId) => {
         const { name, content } = exportRef(refId, normalizedDatabase);
-        const fullName = `relationships/${name}.relationship.aml`;
+        const pathName = `relationships/${name}.relationship.aml`;
         return {
-          name: fullName,
+          originalName: name,
+          name: pathName,
           content,
         };
       });
@@ -38,6 +40,7 @@ export default class AmlExporter {
 
     const amlProject = exportProject(database, normalizedDatabase, res.models, res.relationships, dataSource);
     const datasets = [{
+      originalName: amlProject.name,
       name: `datasets/${amlProject.name}.dataset.aml`,
       content: amlProject.content,
     }];

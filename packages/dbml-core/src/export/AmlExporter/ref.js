@@ -35,7 +35,7 @@ export function exportRef (refId, normalizedDatabase) {
 
   // TODO: resolve edge case naming conflict
   // can't use ref.name because they aren't unique
-  const name = `${fromSchema.name}_${fromTable.name}_${fromField.name}__${toSchema.name}_${toTable.name}_${toField}`;
+  const name = `${fromSchema.name}_${fromTable.name}_${fromField.name}__${toSchema.name}_${toTable.name}_${toField.name}`;
   const fromSchemaName = `${shouldPrintSchema(fromSchema, normalizedDatabase) ? `${fromSchema.name}.` : 'public'}`;
   const toSchemaName = `${shouldPrintSchema(toSchema, normalizedDatabase) ? `${toSchema.name}.` : 'public'}`;
 
