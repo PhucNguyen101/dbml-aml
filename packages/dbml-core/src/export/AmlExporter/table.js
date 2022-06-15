@@ -17,10 +17,3 @@ export function exportTable (tableId, model, dataSource) {
   tableStr += `${content.map(line => `  ${line}`).join('\n')}\n}\n\n\n`;
   return { name: nameTable, content: tableStr };
 }
-
-export function exportTables (tableIds, model, dataSource) {
-  const tableStrs = tableIds.map((tableId) => {
-    return exportTable(tableId, model, dataSource);
-  });
-  return tableStrs;
-}

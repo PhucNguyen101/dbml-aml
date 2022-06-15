@@ -1,5 +1,4 @@
 import { hasWhiteSpace } from '../utils';
-import { DEFAULT_SCHEMA_NAME } from '../../model_structure/config';
 
 const TYPE = new Map();
 TYPE.set('int', 'number');
