@@ -1,4 +1,4 @@
-import { importer } from '@dbml/core';
+import { importer } from '@dbml-aml/core';
 import figures from 'figures';
 import chalk from 'chalk';
 import path from 'path';
