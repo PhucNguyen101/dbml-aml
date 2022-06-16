@@ -41,5 +41,6 @@ export function buildNewTableName (firstTable, secondTable, usedTableNames) {
 }
 
 export function escapeSpecialCharacter (str) {
+  if (!str) return '';
   return str.replace(/\n/g, '\\n').replace(/'/g, "'");
 }
