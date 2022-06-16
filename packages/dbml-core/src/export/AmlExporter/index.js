@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { exportProject } from './project';
 import { exportTable } from './table';
 import { exportRef } from './ref';
@@ -5,6 +6,8 @@ import { exportRef } from './ref';
 export default class AmlExporter {
   static export (normalizedDatabase, dataSource) {
     const database = normalizedDatabase.database['1'];
+
+    dataSource = dataSource || database.name || 'undefined';
 
     const res = database.schemaIds.reduce((accumulator, schemaId) => {
       const schema = normalizedDatabase.schemas[schemaId];
