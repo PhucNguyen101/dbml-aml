@@ -20,7 +20,7 @@ export function getFieldLines (tableId, model) {
     const typeDBML = hasWhiteSpace(field.type.type_name) ? `"${field.type.type_name}"` : field.type.type_name;
     const typeAML = TYPE.has(typeDBML) ? TYPE.get(typeDBML) : 'text';
     let line = `  dimension ${field.name} {\n`;
-    line += `    lable: '${field.name}'\n`;
+    line += `    label: '${field.name}'\n`;
     if (field.note) line += `    description: '${escapeSpecialCharacter(field.note)}'\n`;
     line += `    type: '${typeAML}'\n  }`;
     return line;
