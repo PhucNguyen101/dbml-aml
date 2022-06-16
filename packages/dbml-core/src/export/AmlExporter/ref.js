@@ -14,10 +14,10 @@ export function exportRef (refId, normalizedDatabase) {
       break;
     case '1*':
       type = 'many_to_one';
+      [fromEndpoint, toEndpoint] = [endPoint1, endPoint0];
       break;
     case '*1':
       type = 'many_to_one';
-      [fromEndpoint, toEndpoint] = [endPoint1, endPoint0];
       break;
     case '**':
       throw Error('many-to-many relationships are not supported');
