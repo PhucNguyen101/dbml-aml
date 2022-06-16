@@ -40,3 +40,7 @@ export function buildNewTableName (firstTable, secondTable, usedTableNames) {
   return newTableName;
 }
 
+export function escapeSpecialCharacter (str) {
+  if (!str) return '';
+  return str.replace(/\n/g, '\\n').replace(/'/g, "'");
+}

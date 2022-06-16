@@ -40,7 +40,7 @@ function dbml2aml (args) {
   program
     .usage('[options] <files...>')
     .option('-o, --out-dir <pathspec>', 'compile an input files into an output directory')
-    .option('-ds, --data-source <pathspec>', 'specify datasource name, default is same name as project name');
+    .option('-d, --data-source <pathspec>', 'specify datasource name, default is same name as project name');
 
   program.parse(args);
   amlExportHandler(program);
