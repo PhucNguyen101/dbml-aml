@@ -1,0 +1,283 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "aml",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#number"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#heredoc"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#boolean"
+		},
+		{
+			"include": "#null"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.aml",
+				"match": "\\b(const|Type|Func|Trait|Impl|import)\\b"
+			}]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"begin": "(^[ \\t]+)?((//)(?:\\s*((@)internal)(?=\\s|$))?)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.comment.leading.js"
+						},
+						"2": {
+							"name": "comment.line.double-slash.js"
+						},
+						"3": {
+							"name": "punctuation.definition.comment.js"
+						},
+						"4": {
+							"name": "storage.type.internaldeclaration.js"
+						},
+						"5": {
+							"name": "punctuation.decorator.internaldeclaration.js"
+						}
+					},
+					"end": "(?=$)",
+					"contentName": "comment.line.double-slash.js"
+				}
+			]
+		},
+		"boolean": {
+			"name": "constant.boolean.aml",
+			"match": "true|false"
+		},
+		"null": {
+			"name": "constant.null.aml",
+			"match": "NULL"
+		},
+		"number": {
+			"name": "constant.numeric.aml",
+			"patterns": [
+				{
+					"include": "#number-float"
+				},
+				{
+					"include": "#number-dec"
+				},
+				{
+					"include": "#number-hex"
+				},
+				{
+					"include": "#number-oct"
+				},
+				{
+					"include": "#number-bin"
+				},
+				{
+					"include": "#number-long"
+				},
+				{
+					"name": "invalid.illegal.name.aml",
+					"match": "\\b[0-9]+\\w+"
+				}
+			]
+		},
+		"number-float": {
+			"name": "constant.numeric.float.aml",
+			"match": "(?x)\n  (?<! \\w)(?:\n    (?:\n      \\.[0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\. [0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\.\n    ) (?: [eE][+-]?[0-9](?: _?[0-9] )* )?\n    |\n    [0-9](?: _?[0-9] )* (?: [eE][+-]?[0-9](?: _?[0-9] )* )\n  )([jJ])?\\b\n",
+			"captures": {
+				"1": {
+					"name": "storage.type.imaginary.number.aml"
+				}
+			}
+		},
+		"number-dec": {
+			"name": "constant.numeric.dec.aml",
+			"match": "(?x)\n  (?<![\\w\\.])(?:\n      [1-9](?: _?[0-9] )*\n      |\n      0+\n      |\n      [0-9](?: _?[0-9] )* ([jJ])\n      |\n      0 ([0-9]+)(?![eE\\.])\n  )\\b\n",
+			"captures": {
+				"1": {
+					"name": "storage.type.imaginary.number.aml"
+				},
+				"2": {
+					"name": "invalid.illegal.dec.aml"
+				}
+			}
+		},
+		"number-hex": {
+			"name": "constant.numeric.hex.aml",
+			"match": "(?x)\n  (?<![\\w\\.])\n    (0[xX]) (_?[0-9a-fA-F])+\n  \\b\n",
+			"captures": {
+				"1": {
+					"name": "storage.type.number.aml"
+				}
+			}
+		},
+		"number-oct": {
+			"name": "constant.numeric.oct.aml",
+			"match": "(?x)\n  (?<![\\w\\.])\n    (0[oO]) (_?[0-7])+\n  \\b\n",
+			"captures": {
+				"1": {
+					"name": "storage.type.number.aml"
+				}
+			}
+		},
+		"number-bin": {
+			"name": "constant.numeric.bin.aml",
+			"match": "(?x)\n  (?<![\\w\\.])\n    (0[bB]) (_?[01])+\n  \\b\n",
+			"captures": {
+				"1": {
+					"name": "storage.type.number.aml"
+				}
+			}
+		},
+		"number-long": {
+			"name": "constant.numeric.bin.aml",
+			"comment": "this is to support aml2 syntax for long ints",
+			"match": "(?x)\n  (?<![\\w\\.])\n    ([1-9][0-9]* | 0) ([lL])\n  \\b\n",
+			"captures": {
+				"2": {
+					"name": "storage.type.number.aml"
+				}
+			}
+		},
+		"strings": {
+			"patterns": [
+				{
+					"include": "#string-triple"
+				},
+				{
+					"include": "#string-double"
+				},
+				{
+					"include": "#string-single"
+				}
+			]
+		},
+		"string-double": {
+			"name": "string.quoted.double.aml",
+			"begin": "\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.aml"
+				}
+			},
+			"end": "(\")|((?:[^\\\\\\n])$)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.string.end.aml"
+				},
+				"2": {
+					"name": "invalid.illegal.newline.aml"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#string-character-escape"
+				}
+			]
+		},
+		"string-single": {
+			"name": "string.quoted.single.aml",
+			"begin": "'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.aml"
+				}
+			},
+			"end": "(\\')|((?:[^\\\\\\n])$)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.string.end.aml"
+				},
+				"2": {
+					"name": "invalid.illegal.newline.aml"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#string-character-escape"
+				}
+			]
+		},
+		"string-triple": {
+			"name": "string.quoted.triple.aml",
+			"begin": "'''",
+			"end": "'''",
+			"patterns": [
+				{
+					"include": "#string-character-escape"
+				}
+			]
+		},
+		"string-character-escape": {
+			"name": "constant.character.escape.js",
+			"match": "\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|u\\{[0-9A-Fa-f]+\\}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)"
+		},
+		"types": {
+			"patterns": [
+				{
+					"include": "#type-primitive"
+				},
+				{
+					"include": "#type-builtin-literals"
+				},
+				{
+					"include": "#type-custom"
+				}
+			]
+		},
+		"type-primitive": {
+			"name": "support.type.primitive.aml",
+			"match": "\\b(Number|String|Boolean|Heredoc|Any|self)\\b"
+		},
+		"type-custom": {
+			"name": "support.type.custom.aml",
+			"match": "\\b([A-Z])(\\S*?)\\b"
+		},
+		"heredoc": {
+			"patterns": [
+				{
+					"include": "#embed-sql"
+				},
+				{
+					"include": "#embed-aml"
+				}
+			]
+		},
+		"embed-sql": {
+			"name": "source.sql",
+			"begin": "@sql(\\s|\\n)*?",
+			"end": ";;",
+			"patterns": [
+				{
+					"include": "source.sql"
+				}
+			]
+		},
+		"embed-aml": {
+			"name": "text.aml",
+			"begin": "@aml(\\s|\\n)*?",
+			"end": ";;",
+			"patterns": [
+				{
+					"include": "text.aml"
+				}
+			]
+		}
+	},
+	"uuid": "5512c10d-4cc5-434c-b8fc-53b912f55ab3",
+	"scopeName": "source.aml"
+}

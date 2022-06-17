@@ -1,0 +1,25 @@
+{
+  "name": "@holistics/aml-std",
+  "version": "2.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holistics/holistics-core.git",
+    "directory": "packages/aml-std"
+  },
+  "author": "Khanh Tran Quoc <khanh.tranquoc@holistics.io>",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@holistics/aml": "1.11.0"
+  },
+  "scripts": {
+    "build": "tsc --declaration"
+  },
+  "readme": "## Holistics AML Std\n\nHolistics AML Standard definiton for Data Model, Dataset, Relationship\n\n### Version matrix\n| holistics-aml-std | @holistics/aml | @holistics/aml-editor |\n| ----------------- | -------------- | --------------------- |\n| 1.0.0             | 1.6.*          | 1.6.*                 |\n| 1.2.0             | 1.7.*          | 1.7.*                 |\n| 1.3.0             | 1.7.*, 1.8.0   | 1.7.*                 |\n| 1.4.0             | 1.8.1          | 1.7.*                 |\n| 2.0.0             | 1.8.1          | 1.7.*                 |\n\n### Usage\n```ts\nimport { Program } from '@holistics/aml';\nimport { AMLWorker } from '@holistics/aml-editor';\nimport { \n  loadHolisticsAMLDefinitionToProgram,\n  loadHolisticsAMLDefinitionToWorker\n} from '@holistics/aml-std';\n\nconst program = new Program();\nloadHolisticsAMLDefinitionToProgram(program);\n\nconst worker = new AMLWorker();\nloadHolisticsAMLDefinitionToWorker(worker);\n\nconsole.log(program.globalSymbolTable) // { Model, TableModel, QueryModel, ... }\n```\n"
+}
