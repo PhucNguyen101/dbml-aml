@@ -31,7 +31,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "parsimmon": "^1.13.0",
     "pluralize": "^8.0.0"
   },
@@ -40,6 +40,7 @@
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@types/lodash": "^4.14.182",
     "babel-jest": "^24.8.0",
     "bluebird": "^3.5.5",
     "expect": "^24.8.0",
