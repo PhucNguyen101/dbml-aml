@@ -4,6 +4,7 @@ import postgresParser from './postgresParser';
 import dbmlParser from './dbmlParser';
 import schemarbParser from './schemarbParser';
 import mssqlParser from './mssqlParser';
+import { parseFromAml } from './aml/codegen';
 
 class Parser {
   static parseJSONToDatabase (rawDatabase) {
@@ -31,6 +32,10 @@ class Parser {
     return mssqlParser.parseWithPegError(str);
   }
 
+  static parseAMLToJSON (str) {
+    return parseFromAml(str);
+  }
+
   static parse (str, format) {
     let rawDatabase = {};
     switch (format) {
@@ -52,6 +57,10 @@ class Parser {
 
       case 'mssql':
         rawDatabase = Parser.parseMSSQLToJSON(str);
+        break;
+
+      case 'aml':
+        rawDatabase = Parser.parseAMLToJSON(str);
         break;
 
       case 'json':
