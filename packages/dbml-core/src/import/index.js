@@ -8,6 +8,16 @@ function _import (str, format) {
   return dbml;
 }
 
+function _importV2 (str, format, options) {
+  const database = Parser.parse(str, format, options);
+  console.log(database);
+  return '';
+  const dbml = ModelExporter.export(database.normalize(), 'dbml');
+
+  return dbml;
+}
+
 export default {
   import: _import,
+  importV2: _importV2,
 };

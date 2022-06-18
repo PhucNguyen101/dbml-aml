@@ -1,0 +1,24 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_cities {
+  type: 'table'
+  label: "cities"
+  description: 'sasasa'
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."cities"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension name {
+    label: 'name'
+    type: 'text'
+  }
+  dimension country_id {
+    label: 'country_id'
+    type: 'number'
+  }
+}
+
+

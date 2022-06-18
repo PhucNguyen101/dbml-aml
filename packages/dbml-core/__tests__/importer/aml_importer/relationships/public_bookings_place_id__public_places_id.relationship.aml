@@ -1,0 +1,10 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+
+Relationship public_bookings_place_id__public_places_id {
+  type: 'many_to_one'
+  from: ref('public_bookings', 'place_id')
+  to: ref('public_places', 'id')
+}
+  

@@ -838,12 +838,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@holistics/aml@^2.0.0", "@holistics/aml@^2.0.0-beta4":
-  version "2.0.0"
-  resolved "https://npm.pkg.github.com/download/@holistics/aml/2.0.0/bc438ed797e253930eb1e4a19dce2ef85db34d58efced081a6624807431f1bec#75c08be9d3c259db11359b9dcc8a635fcbc900e2"
-  integrity sha512-2lqtItAj9ITC92GxD2jBZCY9nwi079yjGoTIB9jhMt/TrrKfmRvpHsBdHQ2q9RpCZ2DkhXCuocwrVpZdFlS0eg==
+"@holistics/aml@1.11.0":
+  version "1.11.0"
+  resolved "https://npm.pkg.github.com/download/@holistics/aml/1.11.0/9500235566b1336ad67024ff714685223f87c60dbb977d0032da5319f28bac52#8844090ac4a9898e2bd30a525eab4476c24afb12"
+  integrity sha512-/t9Q3+Tv6GiR1llXhKIdj4suZLxD/imi5pO0HwGWHHTbfR5BdYfbV6EUSJ8G64HcwRru78rPZxxn6nyKYfykRQ==
   dependencies:
-    "@holistics/aml" "^2.0.0-beta4"
     "@types/lodash" "^4.14.150"
     "@types/parsimmon" "^1.10.1"
     chalk "^4.1.0"
@@ -1053,7 +1052,7 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/lodash@^4.14.150":
+"@types/lodash@^4.14.150", "@types/lodash@^4.14.182":
   version "4.14.182"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
   integrity sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==

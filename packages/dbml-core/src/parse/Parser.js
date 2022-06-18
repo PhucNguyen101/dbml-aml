@@ -32,11 +32,11 @@ class Parser {
     return mssqlParser.parseWithPegError(str);
   }
 
-  static parseAMLToJSON (str) {
-    return parseFromAml(str);
+  static parseAMLToJSON (datasetPath, rootPath) {
+    return parseFromAml(datasetPath, rootPath);
   }
 
-  static parse (str, format) {
+  static parse (str, format, options = {}) {
     let rawDatabase = {};
     switch (format) {
       case 'mysql':
@@ -59,9 +59,11 @@ class Parser {
         rawDatabase = Parser.parseMSSQLToJSON(str);
         break;
 
-      case 'aml':
-        rawDatabase = Parser.parseAMLToJSON(str);
+      case 'aml': {
+        const { datasetPath, rootPath } = options;
+        rawDatabase = Parser.parseAMLToJSON(datasetPath, rootPath);
         break;
+      }
 
       case 'json':
         if (typeof str === 'object') {

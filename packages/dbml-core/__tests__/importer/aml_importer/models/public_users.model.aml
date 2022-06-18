@@ -1,0 +1,22 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_users {
+  type: 'table'
+  label: "users"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."users"'
+  dimension id {
+    label: 'id'
+    description: 'hellooooooooo ooooooo oooooooooooooo oooooooooooooooooo oooooo oooooooooooo'
+    type: 'number'
+  }
+  dimension email {
+    label: 'email'
+    description: 'hello how are you'
+    type: 'text'
+  }
+}
+
+

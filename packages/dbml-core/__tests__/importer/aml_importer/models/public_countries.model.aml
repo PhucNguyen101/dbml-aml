@@ -1,0 +1,25 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_countries {
+  type: 'table'
+  label: "countries"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."countries"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension country_code {
+    label: 'country_code'
+    type: 'text'
+  }
+  dimension name {
+    label: 'name'
+    description: 'hello'
+    type: 'text'
+  }
+}
+
+

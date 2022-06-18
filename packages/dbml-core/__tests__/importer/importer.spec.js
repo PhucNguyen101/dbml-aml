@@ -1,4 +1,5 @@
 import importer from '../../src/import';
+import path from 'path';
 
 describe('@dbml/core - importer', () => {
   /**
@@ -32,4 +33,17 @@ describe('@dbml/core - importer', () => {
     runTest(name, 'mssql_importer', 'mssql');
   });
   /* eslint-enable */
+
+  const runAmlTest = () => {
+    /* eslint-disable */
+    const rootPath = path.resolve(__dirname, './aml_importer');
+    const datasetPath = path.resolve(rootPath, './datasets/index.dataset.aml');
+    const output = require(`./aml_importer/out.dbml`);
+    const res = importer.importV2('', 'aml', { datasetPath, rootPath });
+
+    expect(res).toBe(output);
+    /* eslint-enable */
+  };
+
+  test('aml to dbml test', runAmlTest);
 });

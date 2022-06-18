@@ -1,0 +1,20 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_hosts {
+  type: 'table'
+  label: "hosts"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."hosts"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension user_id {
+    label: 'user_id'
+    type: 'number'
+  }
+}
+
+
