@@ -53,6 +53,8 @@ export const convertAMLDatasetToDataset = (amlDataset) => {
     join_configs: joinConfigs,
     data_source_name: amlDataset.data_source_name,
     owner: amlDataset.owner || '',
+    raw_relationships: amlDataset.relationships,
+    raw_data_models: amlDataset.models,
   };
 };
 export const amlToDataset = ({ service }, { filePath }) => {

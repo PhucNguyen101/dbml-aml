@@ -34,7 +34,7 @@ export const convertAMLModelToModel = (amlModel: AMLModel): Model => {
     description: amlModel.description || '',
     data_source_id: amlModel.data_source_name,
     owner: amlModel.owner || '',
-    dimensions: map(amlModel.dimensions, (field) => {
+    dimensions: map(amlModel.dimension, (field) => {
       return {
         ...convertAMLFieldtoField(field, amlModel, 'dimension'),
       };
@@ -43,7 +43,7 @@ export const convertAMLModelToModel = (amlModel: AMLModel): Model => {
     query: amlModel.query || '',
     data_source_name: amlModel.data_source_name,
     relationship: [],
-    measures: map(amlModel.measures, (field) => {
+    measures: map(amlModel.measure, (field) => {
       return {
         ...convertAMLFieldtoField(field, amlModel, 'measure'),
       };
