@@ -3,6 +3,7 @@ import { getProject } from '@holistics/aml/lib/src/utils';
 import { isAML } from '../utils';
 import { loadHolisticsAMLDefinitionToProgram } from '../aml-std';
 import { parseAMLFile } from '../parser';
+import { convertDatasetToDbmlRawDB } from './dataset';
 
 const initFileSystem = (program, rootPath) => {
   const { pathResolver } = program.vfs;
@@ -17,10 +18,6 @@ const initFileSystem = (program, rootPath) => {
   // });
 };
 
-export function convertDatasetToDbmlRawDB (dataset) {
-  return null;
-}
-
 export function parseFromAml (datasetPath, rootPath) {
   const service = new Service();
   const { program } = service;
@@ -28,9 +25,9 @@ export function parseFromAml (datasetPath, rootPath) {
 
   initFileSystem(program, rootPath);
 
-  const dataset = parseAMLFile(service, datasetPath);
+  const parseResult = parseAMLFile(service, datasetPath);
 
-  console.log(JSON.stringify(dataset, null, 2));
+  console.log(JSON.stringify(parseResult, null, 2));
 
-  return convertDatasetToDbmlRawDB();
+  return convertDatasetToDbmlRawDB(parseResult.data);
 }

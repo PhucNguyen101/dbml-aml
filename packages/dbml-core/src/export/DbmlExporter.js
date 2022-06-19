@@ -261,10 +261,19 @@ class DbmlExporter {
     return tableGroupStrs.length ? tableGroupStrs.join('\n') : '';
   }
 
+  static exportProject (database) {
+    if (!database || !database.name) return '';
+    return `Project ${database.name} {
+  note: ${database.note}
+}`;
+  }
+
   static export (model) {
     let res = '';
     let hasBlockAbove = false;
     const database = model.database['1'];
+
+    res += this.exportProject(database);
 
     database.schemaIds.forEach((schemaId) => {
       const {

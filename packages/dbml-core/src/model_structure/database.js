@@ -27,6 +27,7 @@ class Database extends Element {
     this.databaseType = project.database_type;
     this.name = project.name;
     this.aliases = aliases;
+    this.data_source_name = project.data_source_name;
 
     // The process order is important. Do not change !
     this.processSchemas(schemas);
@@ -155,6 +156,7 @@ class Database extends Element {
       note: this.note,
       databaseType: this.databaseType,
       name: this.name,
+      data_source_name: this.data_source_name,
     };
   }
 
