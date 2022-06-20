@@ -1,5 +1,5 @@
-import importer from '../../src/import';
 import path from 'path';
+import importer from '../../src/import';
 
 describe('@dbml/core - importer', () => {
   /**

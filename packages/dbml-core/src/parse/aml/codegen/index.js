@@ -27,7 +27,7 @@ export function parseFromAml (datasetPath, rootPath) {
 
   const parseResult = parseAMLFile(service, datasetPath);
 
-  console.log(JSON.stringify(parseResult, null, 2));
+  // console.log(JSON.stringify(parseResult, null, 2));
 
   return convertDatasetToDbmlRawDB(parseResult.data);
 }

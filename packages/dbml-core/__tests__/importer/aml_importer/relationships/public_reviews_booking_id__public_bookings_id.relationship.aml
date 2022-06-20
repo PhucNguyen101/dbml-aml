@@ -3,7 +3,7 @@
 
 
 Relationship public_reviews_booking_id__public_bookings_id {
-  type: 'many_to_one'
+  type: 'one_to_one'
   from: ref('public_reviews', 'booking_id')
   to: ref('public_bookings', 'id')
 }
