@@ -1,10 +1,13 @@
 Project index {
-  note: 'hello'
+  note: "hello"
+  owner: "undefined"
+  data_source_name: "undefined"
 }
 
 Table "users" {
   "id" number [note: 'hellooooooooo ooooooo oooooooooooooo oooooooooooooooooo oooooo oooooooooooo']
   "email" text [note: 'hello how are you']
+
 }
 
 Table "bookings" {
@@ -15,6 +18,7 @@ Table "bookings" {
   "end_date" date
   "price_per_night" text
   "num_nights" number
+
 }
 
 Table "places" {
@@ -24,6 +28,7 @@ Table "places" {
   "city_id" text
   "country_id" text
   "country_code" text
+
 }
 
 Table "reviews" {
@@ -31,11 +36,13 @@ Table "reviews" {
   "booking_id" number
   "rating" text
   "review_body" text
+
 }
 
 Table "hosts" {
   "id" number
   "user_id" number
+
 }
 
 Table "cities" {
@@ -43,12 +50,14 @@ Table "cities" {
   "name" text
   "country_id" number
   Note: 'sasasa'
+
 }
 
 Table "countries" {
   "id" number
   "country_code" text
   "name" text [note: 'hello']
+
 }
 
 Ref:"countries"."id" < "cities"."country_id"

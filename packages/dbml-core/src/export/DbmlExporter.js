@@ -141,6 +141,7 @@ class DbmlExporter {
       const fieldContents = DbmlExporter.getFieldLines(tableId, model);
       const indexContents = DbmlExporter.getIndexLines(tableId, model);
 
+
       return {
         tableId,
         fieldContents,
@@ -149,6 +150,14 @@ class DbmlExporter {
     });
 
     return tableContentArr;
+  }
+
+  static getTableOwnerAndDatasource (table) {
+    let ownerContent = '';
+    let dataSourceNameContent = '';
+    if (table.owner) ownerContent = `  Owner: ${table.owner}\n`;
+    if (table.data_source_name) dataSourceNameContent = `  data_source_name: ${table.data_source_name}\n`;
+    return { ownerContent, dataSourceNameContent };
   }
 
   static getTableSettings (table) {
@@ -177,9 +186,14 @@ class DbmlExporter {
       }
       const tableNote = table.note ? `  Note: '${table.note}'\n` : '';
 
+      const { ownerContent, dataSourceNameContent } = this.getTableOwnerAndDatasource(table);
+
       const tableStr = `Table ${shouldPrintSchema(schema, model)
         ? `"${schema.name}".` : ''}"${table.name}"${tableSettingStr} {\n${
-        tableContent.fieldContents.map(line => `  ${line}`).join('\n')}\n${indexStr ? `${indexStr}\n` : ''}${tableNote}}\n`;
+        tableContent.fieldContents.map(line => `  ${line}`).join('\n')}
+${indexStr ? `${indexStr}\n` : ''}${tableNote}${ownerContent}${dataSourceNameContent}
+}
+`;
 
       return tableStr;
     });
@@ -264,7 +278,9 @@ class DbmlExporter {
   static exportProject (database) {
     if (!database || !database.name) return '';
     return `Project ${database.name} {
-  note: '${database.note}'
+  note: "${database.note}"
+  owner: "${database.owner}"
+  data_source_name: "${database.data_source_name}"
 }
 
 `;
