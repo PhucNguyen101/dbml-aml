@@ -1,13 +1,4 @@
-import { DateTimeFormat } from '../utils/formatDate';
-import { NumberPatternFormat } from '../utils/toNumberFormat';
-
-export interface PredefinedFormatOption {
-  label: string,
-  format: NumberPatternFormat | DateTimeFormat | { sub_type: string },
-  sample? : string,
-}
-
-export const NUMBER_FORMATS: PredefinedFormatOption[] = [
+export const NUMBER_FORMATS = [
   { label: 'Inherited from Modeling', format: { pattern: 'inherited' } },
   { label: 'No format', format: { pattern: 'none' } },
   {
@@ -57,7 +48,7 @@ export const NUMBER_FORMATS: PredefinedFormatOption[] = [
   },
 ];
 
-export const DATE_FORMATS: PredefinedFormatOption[] = [
+export const DATE_FORMATS = [
   { label: 'Default', format: { pattern: 'LLL dd yyyy' } },
   { label: '12/31/2020', format: { pattern: 'LL dd yyyy', separator: '/' } },
   { label: '31/12/2020', format: { pattern: 'dd LL yyyy', separator: '/' } },

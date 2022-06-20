@@ -1,9 +1,4 @@
-export interface Option {
-  label: string,
-  value: string,
-}
-
-export const SYMBOL_CURRENCIES: Option[] = [
+export const SYMBOL_CURRENCIES = [
   { value: '$', label: '($) US Dollar / MEX Peso' },
   { value: '€', label: '(€) Euro' },
   { value: '¥', label: '(¥) Yen' },
@@ -26,7 +21,7 @@ export const SYMBOL_CURRENCIES: Option[] = [
   { value: 'R', label: '(R) South African Rand' },
 ];
 
-export const NON_SYMBOL_CURRENCIES: Option[] = [
+export const NON_SYMBOL_CURRENCIES = [
   { value: 'Fr', label: '(Fr) Franc' },
   { value: 'kr', label: '(kr) Krona / Krone' },
   { value: 'Ft', label: '(Ft) Forint' },
@@ -36,4 +31,4 @@ export const NON_SYMBOL_CURRENCIES: Option[] = [
   { value: 'Tk', label: '(Tk) BGD Taka' },
 ];
 
-export const CURRENCIES: Option[] = [...SYMBOL_CURRENCIES, ...NON_SYMBOL_CURRENCIES];
+export const CURRENCIES = [...SYMBOL_CURRENCIES, ...NON_SYMBOL_CURRENCIES];

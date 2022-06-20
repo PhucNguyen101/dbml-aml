@@ -2,7 +2,7 @@
 
 import { map } from 'lodash';
 import { createInterpretResultError, createInterpretResultSuccess, validateReturnValueOfModelAndDataset } from './utils';
-import { convertAMLFormatToFormat } from './format';
+// import { convertAMLFormatToFormat } from './format';
 
 export const convertAMLFieldtoField = (amlField, amlModel, fieldType) => {
   let _a;
@@ -21,7 +21,7 @@ export const convertAMLFieldtoField = (amlField, amlModel, fieldType) => {
       id: amlModel.name,
       name: amlModel.name,
     },
-    format: ((amlField.type === 'number' || amlField.type === 'date') && amlField.format) ? convertAMLFormatToFormat(amlField.type, amlField.format) : undefined,
+    // format: ((amlField.type === 'number' || amlField.type === 'date') && amlField.format) ? convertAMLFormatToFormat(amlField.type, amlField.format) : undefined,
   };
 };
 export const convertAMLModelToModel = (amlModel) => {
