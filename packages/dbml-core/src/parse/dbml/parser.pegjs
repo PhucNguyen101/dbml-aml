@@ -120,6 +120,18 @@ ProjectElement
       value: element
     }
   }
+  / _ 'owner:'i _ owner: name _ {
+    return {
+      type: 'owner',
+      value: owner,
+    }
+  }
+  / _ 'data_source_name:'i _ data_source_name: name _ {
+    return {
+      type: 'data_source_name',
+      value: data_source_name,
+    }
+  }
 
 ProjectField
   = name:name _ ":" _ value: StringLiteral {
@@ -301,9 +313,12 @@ TableSyntax
       if (body.note) {
         res = {
           ...res,
-          note: body.note
+          note: body.note,
+          
         }
       }
+      res.owner = body.owner;
+      res.data_source_name = body.data_source_name;
       return res;
     }
 
@@ -313,6 +328,8 @@ TableBody
     const indexes = _.flatMap(elements.filter(ele => ele.type === 'indexes'), (ele => ele.value));
     // pick the last note
     const note = elements.slice().reverse().find(ele => ele.type === 'note');
+    const owner = elements.slice().reverse().find(ele => ele.type === 'owner');
+    const data_source_name = elements.slice().reverse().find(ele => ele.type === 'data_source_name');
 
     // process field for composite primary key:
     const primaryKeyList = [];
@@ -339,7 +356,9 @@ TableBody
     return {
       fields,
       indexes,
-      note: note ? note.value : null
+      note: note ? note.value : null,
+      owner: owner ? owner.value : null,
+      data_source_name: data_source_name ? data_source_name.value : null,
     }
   }
 
@@ -348,6 +367,15 @@ TableElement
     return {
       type: 'indexes',
       value: indexes
+    }
+  }
+  / _ 'owner:'i _ owner: name _ {
+    return { type: 'owner', value: owner } 
+  }
+  / _ 'data_source_name:'i _ data_source_name: name _ {
+    return {
+      type: 'data_source_name',
+      value: data_source_name,
     }
   }
   / _ note: ObjectNoteElement _ {
@@ -459,6 +487,12 @@ TableSettings
          if (el.type === "note") {
            result.note = el.value;
           }
+         else if (el.type === "owner") {
+           result.owner = el.value;
+         }
+         else if (el.type === "data_source_name") {
+           result.data_source_name = el.value;
+         }
         }
     });
     return result;
@@ -466,6 +500,13 @@ TableSettings
 
 TableSetting
   = _ v:ObjectNote _ { return { type: 'note', value: v } }
+  / _ 'owner:'i _ owner: name _ { return { type: 'owner', value: owner } }
+  / _ 'data_source_name:'i _ data_source_name: name _ {
+    return {
+      type: 'data_source_name',
+      value: data_source_name,
+    }
+  }
   / _ c: HeaderColor _ { return c }
 
 FieldSetting

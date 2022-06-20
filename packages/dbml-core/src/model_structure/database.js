@@ -28,6 +28,7 @@ class Database extends Element {
     this.name = project.name;
     this.aliases = aliases;
     this.data_source_name = project.data_source_name;
+    this.owner = project.owner;
 
     // The process order is important. Do not change !
     this.processSchemas(schemas);
@@ -157,6 +158,7 @@ class Database extends Element {
       databaseType: this.databaseType,
       name: this.name,
       data_source_name: this.data_source_name,
+      owner: this.owner,
     };
   }
 

@@ -13,9 +13,10 @@ describe('@dbml/core - model_structure', () => {
   beforeAll(() => {
     try {
       database = Parser.parse(dbml, 'dbml');
-      // fs.writeFile('./json.txt', JSON.stringify(Parser.parseDBMLToJSON(dbml), null, 2), { flag: 'w+' }, err => {});
+      fs.writeFile('./json.txt', JSON.stringify(Parser.parseDBMLToJSON(dbml), null, 2), { flag: 'w+' }, err => {});
       normalizedModel = database.normalize();
-      // fs.writeFile('./normalized.txt', JSON.stringify(normalizedModel, null, 2), { flag: 'w+' }, err => {});
+      // console.log(JSON.stringify(normalizedModel, null, 2));
+      fs.writeFile('./normalized.txt', JSON.stringify(normalizedModel, null, 2), { flag: 'w+' }, err => {});
     } catch (err) {
       console.log('error', err);
     }

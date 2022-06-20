@@ -3,6 +3,10 @@
     "1": {
       "id": 1,
       "hasDefaultSchema": false,
+      "note": null,
+      "name": "index",
+      "data_source_name": "sample_postgres_khanh",
+      "owner": "baoleuqoc2",
       "schemaIds": [
         1,
         2,
@@ -164,8 +168,7 @@
       "tableIds": [
         3,
         2,
-        1,
-        4
+        1
       ],
       "schemaId": 1
     }
@@ -175,6 +178,8 @@
       "id": 1,
       "name": "users",
       "alias": "EU",
+      "owner": null,
+      "data_source_name": null,
       "fieldIds": [
         1,
         2,
@@ -191,6 +196,8 @@
       "id": 2,
       "name": "users",
       "alias": null,
+      "owner": null,
+      "data_source_name": null,
       "fieldIds": [
         7,
         8,
@@ -199,7 +206,9 @@
         11,
         12
       ],
-      "indexIds": [],
+      "indexIds": [
+        1
+      ],
       "schemaId": 1,
       "groupId": 1
     },
@@ -207,6 +216,8 @@
       "id": 3,
       "name": "products",
       "alias": null,
+      "owner": "baoebeta123",
+      "data_source_name": null,
       "fieldIds": [
         13,
         14
@@ -219,18 +230,23 @@
       "id": 4,
       "name": "products",
       "alias": "A",
+      "owner": null,
+      "data_source_name": null,
       "fieldIds": [
         15,
         16
       ],
       "indexIds": [],
       "schemaId": 4,
-      "groupId": 1
+      "groupId": null
     },
     "5": {
       "id": 5,
       "name": "locations",
       "alias": null,
+      "note": "ecommerce1234689",
+      "owner": null,
+      "data_source_name": "ecommerce12346",
       "fieldIds": [
         17,
         18
@@ -389,8 +405,23 @@
       "enumId": 3
     }
   },
-  "indexes": {},
-  "indexColumns": {},
+  "indexes": {
+    "1": {
+      "id": 1,
+      "columnIds": [
+        1
+      ],
+      "tableId": 2
+    }
+  },
+  "indexColumns": {
+    "1": {
+      "id": 1,
+      "type": "column",
+      "value": "id",
+      "indexId": 1
+    }
+  },
   "fields": {
     "1": {
       "id": 1,

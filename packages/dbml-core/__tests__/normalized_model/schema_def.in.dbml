@@ -1,3 +1,7 @@
+Project index {
+  owner: "baoleuqoc2"
+  data_source_name: "sample_postgres_khanh"
+}
 Table "ecommerce"."users" as EU {
   id int [pk]
   name varchar
@@ -7,18 +11,23 @@ Table "ecommerce"."users" as EU {
   eg2 gender
 }
 
-Table public.users {
+Table public.users [ owner: "baoebeta", data_source_name: "ecommerce" ] {
   id int [pk]
   name varchar
   pjs job_status
   pjs2 public.job_status
   pg schemaB.gender
   pg2 gender
+  indexes {
+     id
+  }
 }
 
 Table products {
   id int [pk]
   name varchar
+  owner: "baoebeta123"
+
 }
 
 Table schemaA.products as A {
@@ -29,6 +38,8 @@ Table schemaA.products as A {
 Table schemaA.locations {
   id int [pk]
   name varchar [ref: > users.id ]
+  data_source_name: "ecommerce12346"
+  note: "ecommerce1234689"
 }
 
 Ref: "public".users.id < EU.id
@@ -41,11 +52,10 @@ TableGroup tablegroup_name { // tablegroup is case-insensitive.
   public.products 
   users
   ecommerce.users
-  A
 }
 
 enum job_status {
-    created2 [note: 'abcdef']
+    created2 [note: "abcdef"]
     running2
     done2
     failure2

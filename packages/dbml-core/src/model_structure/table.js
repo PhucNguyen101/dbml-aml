@@ -5,7 +5,7 @@ import { DEFAULT_SCHEMA_NAME } from './config';
 import { shouldPrintSchema } from './utils';
 
 class Table extends Element {
-  constructor ({ name, alias, note, fields = [], indexes = [], schema = {}, token, headerColor } = {}) {
+  constructor ({ name, alias, note, fields = [], indexes = [], schema = {}, token, headerColor, owner, data_source_name } = {}) {
     super(token);
     this.name = name;
     this.alias = alias;
@@ -15,6 +15,8 @@ class Table extends Element {
     this.indexes = [];
     this.schema = schema;
     this.dbState = this.schema.dbState;
+    this.owner = owner;
+    this.data_source_name = data_source_name;
     this.generateId();
 
     this.processFields(fields);
@@ -113,6 +115,8 @@ class Table extends Element {
       alias: this.alias,
       note: this.note,
       headerColor: this.headerColor,
+      owner: this.owner,
+      data_source_name: this.data_source_name,
     };
   }
 
