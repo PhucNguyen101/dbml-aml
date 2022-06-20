@@ -15,8 +15,10 @@ function getRelations (type) {
 export function convertRelationshipToDbmlRawRef (relationship) {
   const schemaEndpoint1 = shouldHaveSchema(relationship.rel.from.model);
   const fieldNameEndpoind1 = [relationship.rel.from.field];
+
   const schemaEndpoint2 = shouldHaveSchema(relationship.rel.to.model);
   const fieldNameEndpoind2 = [relationship.rel.to.field];
+
   const relation = getRelations(relationship.rel.type);
   const endpoint1 = {
     schemaName: schemaEndpoint1.haveSchema ? schemaEndpoint1.name[0] : null,

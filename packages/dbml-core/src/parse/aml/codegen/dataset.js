@@ -17,8 +17,8 @@ export function convertDatasetToDbmlRawDB (dataset) {
     refs: dataset.raw_relationships.map(r => convertRelationshipToDbmlRawRef(r)),
     project: {
       name: dataset.name || 'undefined',
-      note: dataset.description,
-      data_source_name: dataset.data_source_name, // not currently used by dbml
+      note: `description: ${dataset.description}
+        data_source_name: ${dataset.data_source_name}`,
     },
   };
 
