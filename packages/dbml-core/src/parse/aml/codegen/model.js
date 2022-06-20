@@ -14,9 +14,8 @@ export function convertModelToDbmlRawTable (model) {
   const table = {
     schema: haveSchema ? name[0] : null,
     name: haveSchema ? name[1] : name[0],
-    note: `description: ${model.description}
-    data source: ${model.data_source_id}
-    owner: ${model.data_source_id} `,
+    note: model.description,
+    // A more complete solution is to update dbml model structure and add `data_source_name` and `owner_name` properties for Table element
 
   };
   table.fields = fields;

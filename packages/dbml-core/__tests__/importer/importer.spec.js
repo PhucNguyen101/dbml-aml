@@ -40,7 +40,7 @@ describe('@dbml/core - importer', () => {
     const datasetPath = path.resolve(rootPath, './datasets/index.dataset.aml');
     const output = require(`./aml_importer/out.dbml`);
     const res = importer.importV2('', 'aml', { datasetPath, rootPath });
-    console.log(res);
+    // console.log(res);
     expect(res).toBe(output);
     /* eslint-enable */
   };

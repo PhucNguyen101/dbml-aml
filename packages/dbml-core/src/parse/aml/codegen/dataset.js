@@ -17,8 +17,11 @@ export function convertDatasetToDbmlRawDB (dataset) {
     refs: dataset.raw_relationships.map(r => convertRelationshipToDbmlRawRef(r)),
     project: {
       name: dataset.name || 'undefined',
-      note: `description: ${dataset.description}
-        data_source_name: ${dataset.data_source_name}`,
+      note: dataset.description,
+      /* A more complete solution is to update dbml model structure and add `data_source_name` property for Project element
+      `description: ${dataset.description}
+      data_source_name: ${dataset.data_source_name}`,
+      */
     },
   };
 

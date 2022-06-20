@@ -264,8 +264,10 @@ class DbmlExporter {
   static exportProject (database) {
     if (!database || !database.name) return '';
     return `Project ${database.name} {
-  note: ${database.note}
-}`;
+  note: '${database.note}'
+}
+
+`;
   }
 
   static export (model) {

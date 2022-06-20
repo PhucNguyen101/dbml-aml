@@ -9,7 +9,7 @@ export function convertDimensionToDbmlRawField (dimension) {
     token: null,
     inline_refs: [],
     pk: false,
-
+    note: dimension.description,
   };
   return field;
 }
