@@ -4,6 +4,7 @@ import postgresParser from './postgresParser';
 import dbmlParser from './dbmlParser';
 import schemarbParser from './schemarbParser';
 import mssqlParser from './mssqlParser';
+import { parseFromAml } from './aml/codegen';
 
 class Parser {
   static parseJSONToDatabase (rawDatabase) {
@@ -31,7 +32,11 @@ class Parser {
     return mssqlParser.parseWithPegError(str);
   }
 
-  static parse (str, format) {
+  static parseAMLToJSON (datasetPath, rootPath) {
+    return parseFromAml(datasetPath, rootPath);
+  }
+
+  static parse (str, format, options = {}) {
     let rawDatabase = {};
     switch (format) {
       case 'mysql':
@@ -53,6 +58,12 @@ class Parser {
       case 'mssql':
         rawDatabase = Parser.parseMSSQLToJSON(str);
         break;
+
+      case 'aml': {
+        const { datasetPath, rootPath } = options;
+        rawDatabase = Parser.parseAMLToJSON(datasetPath, rootPath);
+        break;
+      }
 
       case 'json':
         if (typeof str === 'object') {

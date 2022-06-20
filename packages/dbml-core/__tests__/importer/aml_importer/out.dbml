@@ -1,0 +1,68 @@
+Project index {
+  note: 'hello'
+}
+
+Table "users" {
+  "id" number [note: 'hellooooooooo ooooooo oooooooooooooo oooooooooooooooooo oooooo oooooooooooo']
+  "email" text [note: 'hello how are you']
+}
+
+Table "bookings" {
+  "id" number
+  "user_id" number
+  "place_id" number
+  "start_date" date
+  "end_date" date
+  "price_per_night" text
+  "num_nights" number
+}
+
+Table "places" {
+  "id" number
+  "host_id" number
+  "address" text
+  "city_id" text
+  "country_id" text
+  "country_code" text
+}
+
+Table "reviews" {
+  "id" number
+  "booking_id" number
+  "rating" text
+  "review_body" text
+}
+
+Table "hosts" {
+  "id" number
+  "user_id" number
+}
+
+Table "cities" {
+  "id" number
+  "name" text
+  "country_id" number
+  Note: 'sasasa'
+}
+
+Table "countries" {
+  "id" number
+  "country_code" text
+  "name" text [note: 'hello']
+}
+
+Ref:"countries"."id" < "cities"."country_id"
+
+Ref:"hosts"."id" < "places"."host_id"
+
+Ref:"users"."id" < "bookings"."user_id"
+
+Ref:"places"."id" < "bookings"."place_id"
+
+Ref:"cities"."id" < "places"."city_id"
+
+Ref:"users"."id" < "hosts"."user_id"
+
+Ref:"reviews"."booking_id" - "bookings"."id"
+
+Ref:"countries"."id" < "places"."country_id"

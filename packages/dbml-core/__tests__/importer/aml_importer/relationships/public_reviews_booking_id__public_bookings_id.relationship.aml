@@ -1,0 +1,10 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+
+Relationship public_reviews_booking_id__public_bookings_id {
+  type: 'one_to_one'
+  from: ref('public_reviews', 'booking_id')
+  to: ref('public_bookings', 'id')
+}
+  

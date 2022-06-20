@@ -1,0 +1,10 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+
+Relationship public_places_city_id__public_cities_id {
+  type: 'many_to_one'
+  from: ref('public_places', 'city_id')
+  to: ref('public_cities', 'id')
+}
+  

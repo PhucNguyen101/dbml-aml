@@ -1,0 +1,36 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_places {
+  type: 'table'
+  label: "places"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."places"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension host_id {
+    label: 'host_id'
+    type: 'number'
+  }
+  dimension address {
+    label: 'address'
+    type: 'text'
+  }
+  dimension city_id {
+    label: 'city_id'
+    type: 'text'
+  }
+  dimension country_id {
+    label: 'country_id'
+    type: 'text'
+  }
+  dimension country_code {
+    label: 'country_code'
+    type: 'text'
+  }
+}
+
+

@@ -1,0 +1,82 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+
+import '../models/public_users.model.aml' { public_users }
+import '../models/public_bookings.model.aml' { public_bookings }
+import '../models/public_places.model.aml' { public_places }
+import '../models/public_reviews.model.aml' { public_reviews }
+import '../models/public_hosts.model.aml' { public_hosts }
+import '../models/public_cities.model.aml' { public_cities }
+import '../models/public_countries.model.aml' { public_countries }
+import '../relationships/public_cities_country_id__public_countries_id.relationship.aml' { public_cities_country_id__public_countries_id }
+import '../relationships/public_places_host_id__public_hosts_id.relationship.aml' { public_places_host_id__public_hosts_id }
+import '../relationships/public_bookings_user_id__public_users_id.relationship.aml' { public_bookings_user_id__public_users_id }
+import '../relationships/public_bookings_place_id__public_places_id.relationship.aml' { public_bookings_place_id__public_places_id }
+import '../relationships/public_places_city_id__public_cities_id.relationship.aml' { public_places_city_id__public_cities_id }
+import '../relationships/public_hosts_user_id__public_users_id.relationship.aml' { public_hosts_user_id__public_users_id }
+import '../relationships/public_reviews_booking_id__public_bookings_id.relationship.aml' { public_reviews_booking_id__public_bookings_id }
+import '../relationships/public_places_country_id__public_countries_id.relationship.aml' { public_places_country_id__public_countries_id }
+
+Dataset index {
+  label: 'index'
+  description: 'hello'
+  data_source_name: 'sample_postgres_khanh'
+
+
+  models: [ 
+    public_users,
+    public_bookings,
+    public_places,
+    public_reviews,
+    public_hosts,
+    public_cities,
+    public_countries,
+  ]
+
+
+
+  relationships: [
+    RelationshipConfig {
+      rel: public_cities_country_id__public_countries_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_places_host_id__public_hosts_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_bookings_user_id__public_users_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_bookings_place_id__public_places_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_places_city_id__public_cities_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_hosts_user_id__public_users_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_reviews_booking_id__public_bookings_id
+      active: true
+    }
+,
+    RelationshipConfig {
+      rel: public_places_country_id__public_countries_id
+      active: true
+    }
+,
+  ]
+
+}

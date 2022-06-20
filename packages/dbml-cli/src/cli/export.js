@@ -2,7 +2,7 @@ import figures from 'figures';
 import chalk from 'chalk';
 import path from 'path';
 import fs from 'fs';
-import { exporter } from '@dbml/core';
+import { exporter } from '@dbml-aml/core';
 import {
   validateInputFilePaths,
   resolvePaths,

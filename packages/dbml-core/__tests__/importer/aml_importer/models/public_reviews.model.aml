@@ -1,0 +1,28 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_reviews {
+  type: 'table'
+  label: "reviews"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."reviews"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension booking_id {
+    label: 'booking_id'
+    type: 'number'
+  }
+  dimension rating {
+    label: 'rating'
+    type: 'text'
+  }
+  dimension review_body {
+    label: 'review_body'
+    type: 'text'
+  }
+}
+
+

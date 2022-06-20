@@ -1,0 +1,40 @@
+// AML dump generated using DBML (dbml.org)
+// Generated at: 2022-06-16T05:09:41.779Z
+
+Model public_bookings {
+  type: 'table'
+  label: "bookings"
+  description: ''
+  data_source_name: 'sample_postgres_khanh'
+  table_name: '"public"."bookings"'
+  dimension id {
+    label: 'id'
+    type: 'number'
+  }
+  dimension user_id {
+    label: 'user_id'
+    type: 'number'
+  }
+  dimension place_id {
+    label: 'place_id'
+    type: 'number'
+  }
+  dimension start_date {
+    label: 'start_date'
+    type: 'date'
+  }
+  dimension end_date {
+    label: 'end_date'
+    type: 'date'
+  }
+  dimension price_per_night {
+    label: 'price_per_night'
+    type: 'text'
+  }
+  dimension num_nights {
+    label: 'num_nights'
+    type: 'number'
+  }
+}
+
+
