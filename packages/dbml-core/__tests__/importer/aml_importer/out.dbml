@@ -4,13 +4,13 @@ Project index {
   data_source_name: "undefined"
 }
 
-Table "users" {
+Table "public_users" {
   "id" number [note: 'hellooooooooo ooooooo oooooooooooooo oooooooooooooooooo oooooo oooooooooooo']
   "email" text [note: 'hello how are you']
 
 }
 
-Table "bookings" {
+Table "public_bookings" {
   "id" number
   "user_id" number
   "place_id" number
@@ -21,7 +21,7 @@ Table "bookings" {
 
 }
 
-Table "places" {
+Table "public_places" {
   "id" number
   "host_id" number
   "address" text
@@ -31,7 +31,7 @@ Table "places" {
 
 }
 
-Table "reviews" {
+Table "public_reviews" {
   "id" number
   "booking_id" number
   "rating" text
@@ -39,13 +39,13 @@ Table "reviews" {
 
 }
 
-Table "hosts" {
+Table "public_hosts" {
   "id" number
   "user_id" number
 
 }
 
-Table "cities" {
+Table "public_cities" {
   "id" number
   "name" text
   "country_id" number
@@ -53,25 +53,25 @@ Table "cities" {
 
 }
 
-Table "countries" {
+Table "public_countries" {
   "id" number
   "country_code" text
   "name" text [note: 'hello']
 
 }
 
-Ref:"countries"."id" < "cities"."country_id"
+Ref:"public_countries"."id" < "public_cities"."country_id"
 
-Ref:"hosts"."id" < "places"."host_id"
+Ref:"public_hosts"."id" < "public_places"."host_id"
 
-Ref:"users"."id" < "bookings"."user_id"
+Ref:"public_users"."id" < "public_bookings"."user_id"
 
-Ref:"places"."id" < "bookings"."place_id"
+Ref:"public_places"."id" < "public_bookings"."place_id"
 
-Ref:"cities"."id" < "places"."city_id"
+Ref:"public_cities"."id" < "public_places"."city_id"
 
-Ref:"users"."id" < "hosts"."user_id"
+Ref:"public_users"."id" < "public_hosts"."user_id"
 
-Ref:"reviews"."booking_id" - "bookings"."id"
+Ref:"public_reviews"."booking_id" - "public_bookings"."id"
 
-Ref:"countries"."id" < "places"."country_id"
+Ref:"public_countries"."id" < "public_places"."country_id"
