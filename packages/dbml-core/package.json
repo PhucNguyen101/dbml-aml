@@ -34,7 +34,8 @@
     "@holistics/aml": "1.11.0",
     "lodash": "^4.17.15",
     "parsimmon": "^1.13.0",
-    "pluralize": "^8.0.0"
+    "pluralize": "^8.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
