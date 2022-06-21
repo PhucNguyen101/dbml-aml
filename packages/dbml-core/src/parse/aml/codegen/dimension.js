@@ -1,3 +1,5 @@
+import { escapeSpecialCharacter } from './utils';
+
 export function convertDimensionToDbmlRawField (dimension) {
   const field = {
     name: dimension.name,
@@ -9,7 +11,7 @@ export function convertDimensionToDbmlRawField (dimension) {
     token: null,
     inline_refs: [],
     pk: false,
-    note: dimension.description,
+    note: escapeSpecialCharacter(dimension.description),
   };
   return field;
 }
