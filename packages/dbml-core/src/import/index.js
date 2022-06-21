@@ -10,9 +10,9 @@ function _import (str, format) {
 
 function _importV2 (str, format, options) {
   const database = Parser.parse(str, format, options);
-  console.log(database);
+  // console.log(database);
   const dbml = ModelExporter.export(database.normalize(), 'dbml');
-  console.log(dbml);
+  // console.log(dbml);
   return dbml;
 }
 

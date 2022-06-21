@@ -36,11 +36,11 @@ export function exportRef (refId, normalizedDatabase) {
   // TODO: resolve edge case naming conflict
   // can't use ref.name because they aren't unique
   const name = `${fromSchema.name}_${fromTable.name}_${fromField.name}__${toSchema.name}_${toTable.name}_${toField.name}`;
-  const fromSchemaName = `${shouldPrintSchema(fromSchema, normalizedDatabase) ? `${fromSchema.name}.` : 'public'}`;
-  const toSchemaName = `${shouldPrintSchema(toSchema, normalizedDatabase) ? `${toSchema.name}.` : 'public'}`;
+  const fromSchemaName = `${shouldPrintSchema(fromSchema, normalizedDatabase) ? `${fromSchema.name}_` : ''}`;
+  const toSchemaName = `${shouldPrintSchema(toSchema, normalizedDatabase) ? `${toSchema.name}_` : ''}`;
 
-  const fromModelName = `${fromSchemaName}_${fromTable.name}`;
-  const toModelName = `${toSchemaName}_${toTable.name}`;
+  const fromModelName = `${fromSchemaName}${fromTable.name}`;
+  const toModelName = `${toSchemaName}${toTable.name}`;
   const content = `
 Relationship ${name} {
   type: '${type}'
