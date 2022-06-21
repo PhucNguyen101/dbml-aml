@@ -7,8 +7,8 @@ export function convertModelToDbmlRawTable (model) {
     schema: 'public',
     name: model.name,
     note: escapeSpecialCharacter(model.description),
-    // A more complete solution is to update dbml model structure and add `data_source_name` and `owner_name` properties for Table element
-
+    owner: model.owner,
+    data_source_name: model.data_source_id,
   };
   table.fields = fields;
   // console.log(JSON.stringify(table, null, 2));

@@ -22,6 +22,7 @@ Dataset index {
   label: 'index'
   description: 'hello'
   data_source_name: 'sample_postgres_khanh'
+  owner: 'phuc'
 
 
   models: [ 

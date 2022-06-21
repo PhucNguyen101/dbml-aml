@@ -7,6 +7,7 @@ Model public_bookings {
   description: ''
   data_source_name: 'sample_postgres_khanh'
   table_name: '"public"."bookings"'
+  owner: 'bao'
   dimension id {
     label: 'id'
     type: 'number'

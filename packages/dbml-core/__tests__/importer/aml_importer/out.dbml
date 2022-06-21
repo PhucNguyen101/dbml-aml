@@ -1,15 +1,15 @@
 Project index {
   note: "hello"
-  owner: "undefined"
-  data_source_name: "undefined"
+  owner: "phuc"
+  data_source_name: "sample_postgres_khanh"
 }
 
 Table "public_users" {
   "id" number [note: 'hellooooooooo ooooooo oooooooooooooo oooooooooooooooooo oooooo oooooooooooo']
   "email" text [note: 'hello how are you']
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_bookings" {
   "id" number
   "user_id" number
@@ -18,9 +18,10 @@ Table "public_bookings" {
   "end_date" date
   "price_per_night" text
   "num_nights" number
+  owner: "bao"
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_places" {
   "id" number
   "host_id" number
@@ -28,38 +29,38 @@ Table "public_places" {
   "city_id" text
   "country_id" text
   "country_code" text
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_reviews" {
   "id" number
   "booking_id" number
   "rating" text
   "review_body" text
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_hosts" {
   "id" number
   "user_id" number
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_cities" {
   "id" number
   "name" text
   "country_id" number
   Note: 'sasasa'
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Table "public_countries" {
   "id" number
   "country_code" text
   "name" text [note: 'hello']
+  data_source_name: "sample_postgres_khanh"
 
 }
-
 Ref:"public_countries"."id" < "public_cities"."country_id"
 
 Ref:"public_hosts"."id" < "public_places"."host_id"

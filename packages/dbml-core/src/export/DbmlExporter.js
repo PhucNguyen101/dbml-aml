@@ -155,8 +155,8 @@ class DbmlExporter {
   static getTableOwnerAndDatasource (table) {
     let ownerContent = '';
     let dataSourceNameContent = '';
-    if (table.owner) ownerContent = `  Owner: ${table.owner}\n`;
-    if (table.data_source_name) dataSourceNameContent = `  data_source_name: ${table.data_source_name}\n`;
+    if (table.owner) ownerContent = `  owner: "${table.owner}"\n`;
+    if (table.data_source_name) dataSourceNameContent = `  data_source_name: "${table.data_source_name}"\n`;
     return { ownerContent, dataSourceNameContent };
   }
 
@@ -192,8 +192,7 @@ class DbmlExporter {
         ? `"${schema.name}".` : ''}"${table.name}"${tableSettingStr} {\n${
         tableContent.fieldContents.map(line => `  ${line}`).join('\n')}
 ${indexStr ? `${indexStr}\n` : ''}${tableNote}${ownerContent}${dataSourceNameContent}
-}
-`;
+}`;
 
       return tableStr;
     });
